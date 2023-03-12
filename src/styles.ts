@@ -1,99 +1,118 @@
-import tw from "tailwind-styled-components";
+import styled from "styled-components";
 
-export const Container = tw.div`
-    flex
-    items-start
-    justify-center
-    p-5
-    w-full
-    bg-[3179ba]
+export const AppContainer = styled.div`
+  align-items: flex-start;
+  background-color: #3179ba;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  padding: 20px;
+  width: 100%;
 `;
 
-export const AppContainer = tw.div`
-    flex
-    items-start
-    justify-start
-    p-5
-    w-full
-    min-h-full
-    bg-blue-500
+export const ColumnTitle = styled.div`
+  padding: 6px 16px 12px;
+  font-weight: bold;
 `;
 
-export const ColumnContainer = tw.div`
-  bg-gray-200
-  w-72
-  min-h-40
-  mr-20
-  rounded-md
-  p-2
-  flex-grow-0
-`;
-
-export const ColumnTitle = tw.div`
-  px-4
-  py-6
-  font-bold
-`;
-
-export const CardContainer = tw.div`
-  bg-slate-50
-  cursor-pointer
-  mb-2
-  py-2
-  px-4
-  max-w-sm
-  rounded-md
-  shadow-md
-`;
-
-type AdditemButtonProps = {
-  dark?: boolean | string;
+type AddItemButtonProps = {
+  dark?: boolean;
 };
 
-export const AddItemButton = tw.button<AdditemButtonProps>`
-  bg-white/25
-  rounded-md
-  border-none
-  text-lg
-  ${(props) => (props.dark ? "text-black" : "text-white")}
-  cursor-pointer
-  max-w-[300px]
-  px-3
-  py-2.5
-  text-left
-  transition-colors
-  w-full
-  hover:bg-white/40
-  hover:text-black
+export const AddItemButton = styled.button<AddItemButtonProps>`
+  background-color: #ffffff3d;
+  border-radius: 3px;
+  border: none;
+  color: ${(props) => (props.dark ? "#000" : "#fff")};
+  cursor: pointer;
+  max-width: 300px;
+  padding: 10px 12px;
+  text-align: left;
+  transition: background 85ms ease-in;
+  width: 100%;
+  &:hover {
+    background-color: #ffffff52;
+  }
 `;
 
-export const NewItemFormContainer = tw.div`
-  max-w-sm
-  flex
-  flex-col
-  w-full
-  items-start
-  bg-white
-  rounded-lg
-  shadow-md
-  p-4
+export const NewItemFormContainer = styled.div`
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
 `;
 
-export const NewItemButton = tw.button`
-  bg-green-500 
-  hover:bg-green-700 
-  text-white 
-  font-bold 
-  py-2 
-  px-4 
-  rounded
+export const NewItemButton = styled.button`
+  background-color: #5aac44;
+  border-radius: 3px;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  padding: 6px 12px;
+  text-align: center;
 `;
 
-export const NewItemInput = tw.input`
-  appearance-none
-  p-3  
-  mb-4
-  leading-tight
-  focus:shadow-outline
-  flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-500 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-300
+export const NewItemInput = styled.input`
+  border-radius: 3px;
+  border: none;
+  box-shadow: #091e4240 0px 1px 0px 0px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
 `;
+
+type DragPreviewContainerProps = {
+  isHidden?: boolean;
+  isPreview?: boolean;
+};
+
+export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
+  transform: ${(props) => (props.isPreview ? "rotate(5deg)" : undefined)};
+  opacity: ${(props) => (props.isHidden ? 0 : 1)};
+`;
+
+export const ColumnContainer = styled(DragPreviewContainer)`
+  background-color: #ebecf0;
+  width: 300px;
+  min-height: 40px;
+  margin-right: 20px;
+  border-radius: 3px;
+  padding: 8px 8px;
+  flex-grow: 0;
+`;
+
+export const CardContainer = styled(DragPreviewContainer)`
+  background-color: #fff;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  max-width: 300px;
+  border-radius: 3px;
+  box-shadow: #091e4240 0px 1px 0px 0px;
+`;
+
+export const CustomDragLayerContainer = styled.div`
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+`;
+
+type DragPreviewWrapperProps = {
+  position: {
+    x: number;
+    y: number;
+  };
+};
+
+export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
+  ({ position: { x, y } }) => ({
+    style: {
+      transform: `translate(${x}px, ${y}px)`,
+    },
+  })
+)<DragPreviewWrapperProps>``;

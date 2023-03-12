@@ -1,7 +1,7 @@
 import { findItemIndexById, moveItem } from "../utlis/arrayUtils";
 
 import { Action } from "./actions";
-import { DragItem } from "/DragItem";
+import { DragItem } from "../state/Dragitem";
 import { nanoid } from "nanoid";
 
 export type Task = {

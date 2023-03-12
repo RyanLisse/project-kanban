@@ -26,6 +26,7 @@
     "react-is": "^18.2.0",
     "styled-components": "^5.3.8",
     "tailwind-styled-components": "^2.2.0",
+    "throttle-debounce-ts": "^1.1.1",
     "use-immer": "^0.8.1"
   },
   "devDependencies": {
