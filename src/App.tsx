@@ -1,14 +1,20 @@
-import { AddNewItem } from "./components/AddnewItem";
+import { AddNewItem } from "./components/AddNewItem";
 import { AppContainer } from "./styles";
 import { Column } from "./components/Column";
+import { addList } from "./state/actions";
+import { useAppState } from "./state/AppStateContext";
 
 export const App = () => {
+  const { lists, dispatch } = useAppState();
+
   return (
     <AppContainer>
-      <Column text="Todo :" />
+      {lists.map((list) => (
+        <Column text={list.text} key={list.id} id={list.id} />
+      ))}
       <AddNewItem
         toggleButtonText="+ Add another list"
-        onAdd={() => console.log("item created")}
+        onAdd={(text) => dispatch(addList(text))}
       />
     </AppContainer>
   );

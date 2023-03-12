@@ -5,7 +5,7 @@ import { useState } from "react";
 type AddNewItemProps = {
   onAdd(text: string): void;
   toggleButtonText: string;
-  dark?: boolean | string;
+  dark?: boolean;
 };
 
 export const AddNewItem = (props: AddNewItemProps) => {
