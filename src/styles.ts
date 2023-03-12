@@ -47,14 +47,15 @@ export const CardContainer = tw.div`
 `;
 
 type AdditemButtonProps = {
-  dark?: boolean;
+  dark?: boolean | string;
 };
-export const AddItemButton = tw.button`
+
+export const AddItemButton = tw.button<AdditemButtonProps>`
   bg-white/25
   rounded-md
   border-none
   text-lg
-  text-${(props) => (props.dark ? "black" : "white")}
+  ${(props) => (props.dark ? "text-black" : "text-white")}
   cursor-pointer
   max-w-[300px]
   px-3
@@ -63,4 +64,5 @@ export const AddItemButton = tw.button`
   transition-colors
   w-full
   hover:bg-white/40
+  hover:text-black
 `;
