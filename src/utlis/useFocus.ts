@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 
-type Props = {};
-
-const useFocus = (props: Props) => {
-  return <div>dhjs</div>;
+export const useFocus = () => {
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    return () => {
+      ref.current?.focus();
+    };
+  }, []);
+  return ref;
 };
-
-export default useFocus;
