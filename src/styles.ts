@@ -66,3 +66,38 @@ export const AddItemButton = tw.button<AdditemButtonProps>`
   hover:bg-white/40
   hover:text-black
 `;
+
+export const NewItemFormContainer = tw.div`
+  max-w-sm
+  flex
+  flex-col
+  w-full
+  items-start
+  bg-white
+  rounded-lg
+  shadow-md
+  p-4
+`;
+
+export const NewItemButton = tw.button`
+  bg-green-500 
+  hover:bg-green-700 
+  text-white 
+  font-bold 
+  py-2 
+  px-4 
+  rounded
+`;
+
+export const NewItemInput = tw.input`
+  appearance-none
+  border 
+  border-gray-400 
+  rounded 
+  w-full 
+  p-3  
+  mb-4
+  leading-tight
+  focus:outline-none 
+  focus:shadow-outline
+`;
